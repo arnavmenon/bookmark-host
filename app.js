@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 const bodyParser= require('body-parser');
 const path = require('path');
+global.appRoot = path.resolve(__dirname);
+
 
 
 const PORT = process.env.PORT || 3000;
@@ -17,10 +19,9 @@ app.use(bodyParser.json());
 
 
 //app.use(morgan('dev'));
-app.get('*', function (req, res) {
-  const index = path.join(__dirname, 'build', 'index.html');
-  res.sendFile(index);
-});
+app.use(function (req, res) {
+  res.sendFile("public/build/index.html", { root: __dirname });
+}); 
 
 const mainController = require('./mainController');
 app.use('/bm', mainController); 
