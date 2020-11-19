@@ -15,13 +15,17 @@ app.use(bodyParser.json());
 
 
 //app.use(morgan('dev'));
+app.get('*', function (req, res) {
+  const index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
+});
 
 const mainController = require('./mainController');
 app.use('/bm', mainController); 
 
-app.use(function (req, res) {
+/* app.use(function (req, res) {
   res.sendFile("public/build/index.html", { root: __dirname });
-});
+}); */
 
 
 mongoose.connect("mongodb+srv://newuser:yeet123@cluster0.6k5bw.mongodb.net/bookmarker?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true },)
