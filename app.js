@@ -26,5 +26,9 @@ mongoose.connect("mongodb+srv://newuser:yeet123@cluster0.6k5bw.mongodb.net/bookm
 
 
 const mainController = require('./mainController');
-app.use('/', mainController); 
+app.use('/bm', mainController); 
+
+app.use(function (req, res) {
+  res.sendFile("public/build/index.html", { root: __dirname });
+});
 
