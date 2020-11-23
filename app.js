@@ -4,6 +4,11 @@ const axios = require('axios');
 const bodyParser= require('body-parser');
 const path = require('path');
 global.appRoot = path.resolve(__dirname);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 004ab4ed5479035637b32e81dd5e65ccbdc7ce15
 
 
 
@@ -20,7 +25,11 @@ app.use(bodyParser.json());
 
 //app.use(morgan('dev'));
 app.use(function (req, res) {
+<<<<<<< HEAD
   res.sendFile("client/build/index.html", { root: __dirname });
+=======
+  res.sendFile("public/build/index.html", { root: __dirname });
+>>>>>>> 004ab4ed5479035637b32e81dd5e65ccbdc7ce15
 }); 
 
 const mainController = require('./mainController');
